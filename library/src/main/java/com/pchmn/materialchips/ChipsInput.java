@@ -66,6 +66,7 @@ public class ChipsInput extends ScrollViewMaxHeight {
     private FilterableListView mFilterableListView;
     // chip validator
     private ChipValidator mChipValidator;
+    private ChipsInputEditText mEditText;
 
     public ChipsInput(Context context) {
         super(context);
@@ -212,13 +213,17 @@ public class ChipsInput extends ScrollViewMaxHeight {
     }
 
     public ChipsInputEditText getEditText() {
-        ChipsInputEditText editText = new ChipsInputEditText(mContext);
-        if(mHintColor != null)
-            editText.setHintTextColor(mHintColor);
-        if(mTextColor != null)
-            editText.setTextColor(mTextColor);
 
-        return editText;
+        if (mEditText ==  null) {
+            mEditText = new ChipsInputEditText(mContext);
+        }
+
+        if(mHintColor != null)
+            mEditText.setHintTextColor(mHintColor);
+        if(mTextColor != null)
+            mEditText.setTextColor(mTextColor);
+
+        return mEditText;
     }
 
     public DetailedChipView getDetailedChipView(ChipInterface chip) {
